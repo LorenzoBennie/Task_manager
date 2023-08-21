@@ -3,3 +3,4 @@ admin, Assign initial tasks, Use task_manager.py to assign each team member with
 DanTheMan, make lunch, Cook a full three course meal for lunch, 21  Aug  2023, 23 Aug 2023, No
 LorenzoBennie, Finish code, Complete the coding exercise, 21  Aug  2023, 30 Aug 2023, No
 SpongeBob, Krabby Patty, Cook 10 Krabby Patties, 21  Aug  2023, 22 Sep 2023, No
+LorenzoBennie, Find motivation, You cant be living like this bra. You need wake that fire up again., 21  Aug  2023, NOW, No
