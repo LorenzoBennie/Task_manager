@@ -46,6 +46,7 @@ a - add task
 va - view all tasks
 vm - view my tasks
 e - exit
+s - statistics
 : ''').lower()
 
     if menu == 'r':
@@ -58,6 +59,10 @@ e - exit
             - Check if the new password and confirmed password are the same
             - If they are the same, add them to the user.txt file,
               otherwise present a relevant message'''
+        if username != "admin":
+            print("Only username: 'admin' is allowed to view statistics. Please exit and login as 'admin'")
+            continue
+
         new_username = input("Enter new username: ")
 
         while True:
@@ -147,6 +152,33 @@ e - exit
                 if task_list[0] == username:
                     print(f'''{line}\nTask:\t{output_space}{task_list[1]}\nAssigned to:{output_space}{task_list[0]}\nDate assigned:{output_space}{task_list[3]}\nDue date:{output_space}{task_list[4]}\nTask complete?{output_space}{task_list[5]}\nTask description:\n {task_list[2]}\n{line}\n''')
 
+    elif menu == 's':
+
+        if username != "admin":
+            print("Only username: 'admin' is allowed to register users. Please exit and login as 'admin'")
+            continue
+
+        with open("tasks.txt", "r") as task_file:
+            task_file_data = task_file.read()
+            each_task = task_file_data.splitlines()
+
+            task_count = 0
+
+            for each_line in each_task:
+                task_count += 1
+
+        with open("user.txt", "r") as user_file:
+            user_file_data = user_file.read()
+            each_user = user_file_data.splitlines()
+
+            user_count = 0
+
+            for each_line in each_user:
+                user_count += 1
+        
+        print(f"Total number of tasks: {task_count}\nTotal number of users: {user_count}")
+
+            
 
     elif menu == 'e':
         print('Goodbye!!!')

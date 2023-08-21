@@ -4,3 +4,5 @@ DanTheMan, make lunch, Cook a full three course meal for lunch, 21  Aug  2023, 2
 LorenzoBennie, Finish code, Complete the coding exercise, 21  Aug  2023, 30 Aug 2023, No
 SpongeBob, Krabby Patty, Cook 10 Krabby Patties, 21  Aug  2023, 22 Sep 2023, No
 LorenzoBennie, Find motivation, You cant be living like this bra. You need wake that fire up again., 21  Aug  2023, NOW, No
+SpongeBob, I'm ready, Get to work, 21  Aug  2023, 21 Nov 2023, No
+Batman, Protect the city, Save the city from being blown up by the Joker, 21  Aug  2023, 03 Dec 2023, No
