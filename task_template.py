@@ -117,7 +117,7 @@ e - exit
         with open("tasks.txt", "r") as task_file:
             task_file_data = task_file.read()
             each_task = task_file_data.splitlines()
-            line = "\u2500" * 50
+            line = "\u2500" * 70
             output_space = "\t" * 3
 
             for each_line in each_task:
@@ -136,6 +136,17 @@ e - exit
               username you have read from the file.
             - If they are the same you print the task in the format of Output 2
               shown in the PDF '''
+        with open("tasks.txt", "r") as task_file:
+            task_file_data = task_file.read()
+            each_task = task_file_data.splitlines()
+            line = "\u2500" * 70
+            output_space = "\t" * 3
+            
+            for each_line in each_task:
+                task_list = each_line.split(", ")
+                if task_list[0] == username:
+                    print(f'''{line}\nTask:\t{output_space}{task_list[1]}\nAssigned to:{output_space}{task_list[0]}\nDate assigned:{output_space}{task_list[3]}\nDue date:{output_space}{task_list[4]}\nTask complete?{output_space}{task_list[5]}\nTask description:\n {task_list[2]}\n{line}\n''')
+
 
     elif menu == 'e':
         print('Goodbye!!!')
