@@ -1,6 +1,7 @@
 #=====importing libraries===========
 '''This is the section where you will import libraries'''
-
+from datetime import datetime
+import calendar
 
 def user_to_dic(file):
     dic = {}
@@ -84,6 +85,24 @@ e - exit
             - Then, get the current date.
             - Add the data to the file task.txt
             - Remember to include 'No' to indicate that the task is not complete.'''
+        while True:
+            user_dic = user_to_dic("user.txt")
+            user_for_task = input("Enter username: ")
+
+            if user_for_task not in user_dic:
+                print("Username does not exist. Please try again")
+                continue
+            else: 
+                break
+        task_title = input("Enter task title: ")
+        task_desrip = input("Enter task description: ")
+        task_due_date = input("Enter the due date for the task: ")
+        get_date = datetime.now()
+        today = (f"{get_date.day}  {calendar.month_name[get_date.month][:3]}  {get_date.year}")
+        task_final = [user_for_task, task_title, task_desrip, today, task_due_date]
+
+        with open("tasks.txt", "a") as task_file:
+            task_file.write(f"\n{', '.join(task_final)}")
 
     elif menu == 'va':
         pass
