@@ -57,6 +57,20 @@ e - exit
             - Check if the new password and confirmed password are the same
             - If they are the same, add them to the user.txt file,
               otherwise present a relevant message'''
+        new_username = input("Enter new username: ")
+
+        while True:
+            new_password = input("New password: ")
+            confirm_password = input("Confirm password: ")
+
+            if new_password == confirm_password:
+                break
+            else:
+                print("Passwords do not match. Please try gain")
+                continue
+
+        with open("user.txt", "a") as user_file:
+            user_file.write(f"\n{new_username}, {new_password}")
 
     elif menu == 'a':
         pass
