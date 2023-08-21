@@ -98,8 +98,9 @@ e - exit
         task_desrip = input("Enter task description: ")
         task_due_date = input("Enter the due date for the task: ")
         get_date = datetime.now()
+        task_status = "No"
         today = (f"{get_date.day}  {calendar.month_name[get_date.month][:3]}  {get_date.year}")
-        task_final = [user_for_task, task_title, task_desrip, today, task_due_date]
+        task_final = [user_for_task, task_title, task_desrip, today, task_due_date, task_status]
 
         with open("tasks.txt", "a") as task_file:
             task_file.write(f"\n{', '.join(task_final)}")
@@ -113,6 +114,16 @@ e - exit
             - Split that line where there is comma and space.
             - Then print the results in the format shown in the Output 2 in the PDF
             - It is much easier to read a file using a for loop.'''
+        with open("tasks.txt", "r") as task_file:
+            task_file_data = task_file.read()
+            each_task = task_file_data.splitlines()
+            line = "\u2500" * 50
+            output_space = "\t" * 3
+
+            for each_line in each_task:
+                task_list = each_line.split(", ")
+                print(f'''{line}\nTask:\t{output_space}{task_list[1]}\nAssigned to:{output_space}{task_list[0]}\nDate assigned:{output_space}{task_list[3]}\nDue date:{output_space}{task_list[4]}\nTask complete?{output_space}{task_list[5]}\nTask description:\n {task_list[2]}\n{line}\n''')
+                
 
     elif menu == 'vm':
         pass
