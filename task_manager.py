@@ -28,14 +28,38 @@ def split_lines(file):
     line_list = file_data.splitlines()
     return line_list
 
-# Defining characters that will be required for the desired output format
+# Prints details of tasks in the required format
 
 
-line = "\u2500" * 70
-output_space = "\t" * 3
+def print_output(output):
+
+    # Defining characters that will be required for the desired output format
+    line = "\u2500" * 70
+    output_space = "\t" * 3
+
+    print(f'''{line}\nTask:\t{output_space}{output[1]}
+Assigned to:{output_space}{output[0]}
+Date assigned:{output_space}{output[3]}
+Due date:{output_space}{output[4]}
+Task complete?{output_space}{output[5]}
+Task description:\n {output[2]}\n{line}\n''')
+
+# Asks the user for the day, month and year of the due date
+# Ensures consistent formatting of the due dates
+
+
+def due_date():
+
+    day = input("Enter the due date day (use two digits): ")
+    month = input("Enter the due date month (use three letter format): ")
+    year = input("Enter the due date year (use four digits): ")
+
+    return (f"{day} {month} {year}")
 
 # ====Login Section====
 # This block of code allows a user to login.
+
+
 while True:
     user_dic = user_to_dic("user.txt")
 
@@ -46,13 +70,13 @@ while True:
     # checks if the password matches the user
     # and asks the user to try again if it does not
     if username not in user_dic:
-        print("Username does not exist. Please try again")
+        print("Username does not exist. Please try again.")
         continue
     if user_dic[username] != password:
-        print("Incorrect password entered. Please try again")
+        print("Incorrect password entered. Please try again.")
         continue
     if user_dic[username] == password:
-        print("Welcome\n")
+        print("Welcome :)\n")
         break
 
 while True:
@@ -73,8 +97,8 @@ s - statistics
 
         # Restricts access to only 'admin'
         if username != "admin":
-            print(''''Only username: admin is allowed to register new users.
-Please exit and login as admin''')
+            print('''Only admin is allowed to register new users.
+Please exit and login as admin.\n''')
             continue
 
         new_username = input("Enter new username: ")
@@ -88,7 +112,7 @@ Please exit and login as admin''')
             if new_password == confirm_password:
                 break
             else:
-                print("Passwords do not match. Please try gain")
+                print("Passwords do not match. Please try again.")
                 continue
 
         # Writes the new user to the user.txt file
@@ -104,7 +128,7 @@ Please exit and login as admin''')
 
             # Checks if the user exists by looking for it in the dictionary
             if user_for_task not in user_dic:
-                print("Username does not exist. Please try again")
+                print("Username does not exist. Please try again.")
                 continue
             else:
                 break
@@ -112,11 +136,14 @@ Please exit and login as admin''')
         # Asks the user for the required details of the task
         task_title = input("Enter task title: ")
         task_desrip = input("Enter task description: ")
-        task_due_date = input("Enter the due date for the task: ")
+        task_due_date = due_date()
+
+        # Obtains the current date in the required format
         get_date = datetime.now()
-        task_status = "No"
         this_month = calendar.month_name[get_date.month][:3]
         today = (f"{get_date.day}  {this_month}  {get_date.year}")
+
+        task_status = "No"
 
         # Gathers all the user input into a list that will eventually be joined
         task_final = [user_for_task, task_title, task_desrip, today,
@@ -129,24 +156,20 @@ Please exit and login as admin''')
     elif menu == 'va':
         pass
         # This code block will read the task from task.txt file and
+        # print to the console in the format of Output 2 presented in the PDF
         with open("tasks.txt", "r") as task_file:
 
             each_task = split_lines(task_file)
 
-            # Loops through each task in tasks.txt
-            # and prints the details in the desired format
+            # Loops through each task in tasks.txt and prints the details
             for each_line in each_task:
                 task_list = each_line.split(", ")
-                print(f'''{line}\nTask:\t{output_space}{task_list[1]}
-Assigned to:{output_space}{task_list[0]}
-Date assigned:{output_space}{task_list[3]}
-Due date:{output_space}{task_list[4]}
-Task complete?{output_space}{task_list[5]}
-Task description:\n {task_list[2]}\n{line}\n''')
+                print_output(task_list)
 
     elif menu == 'vm':
         pass
         # This code block will read the task from task.txt file and
+        # print to the console in the format of Output 2 presented in the PDF
 
         with open("tasks.txt", "r") as task_file:
 
@@ -156,20 +179,15 @@ Task description:\n {task_list[2]}\n{line}\n''')
             for each_line in each_task:
                 task_list = each_line.split(", ")
                 if task_list[0] == username:
-                    print(f'''{line}\nTask:\t{output_space}{task_list[1]}
-Assigned to:{output_space}{task_list[0]}
-Date assigned:{output_space}{task_list[3]}
-Due date:{output_space}{task_list[4]}
-Task complete?{output_space}{task_list[5]}
-Task description:\n {task_list[2]}\n{line}\n''')
+                    print_output(task_list)
 
-    # This code displays company dtatistics to the admin only
+    # This code displays company statistics to the admin only
     elif menu == 's':
 
         # Restricts access to admin only
         if username != "admin":
-            print(''''Only username: 'admin' is allowed to view statistics. '
-Please exit and login as 'admin''')
+            print('''Only admin is allowed to view statistics.
+Please exit and login as admin.\n''')
             continue
 
         with open("tasks.txt", "r") as task_file:
@@ -192,8 +210,8 @@ Please exit and login as 'admin''')
             for each_line in each_user:
                 user_count += 1
 
-        print(f''''Total number of tasks: {task_count}
-Total number of users: {user_count}''')
+        print(f'''\nTotal number of tasks: {task_count}
+Total number of users: {user_count}\n''')
 
     elif menu == 'e':
         print('Goodbye!!!')
