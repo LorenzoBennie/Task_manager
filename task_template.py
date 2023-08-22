@@ -14,6 +14,11 @@ def user_to_dic(file):
             dic[user_and_password[0]] = user_and_password[1]
     return dic
 
+def split_lines(file):
+    file_data = file.read()
+    line_list = file_data.splitlines()
+    return line_list
+
 #====Login Section====
 '''Here you will write code that will allow a user to login.
     - Your code must read usernames and password from the user.txt file
@@ -60,7 +65,7 @@ s - statistics
             - If they are the same, add them to the user.txt file,
               otherwise present a relevant message'''
         if username != "admin":
-            print("Only username: 'admin' is allowed to view statistics. Please exit and login as 'admin'")
+            print("Only username: 'admin' is allowed to register new users. Please exit and login as 'admin'")
             continue
 
         new_username = input("Enter new username: ")
@@ -120,8 +125,9 @@ s - statistics
             - Then print the results in the format shown in the Output 2 in the PDF
             - It is much easier to read a file using a for loop.'''
         with open("tasks.txt", "r") as task_file:
-            task_file_data = task_file.read()
-            each_task = task_file_data.splitlines()
+
+            each_task = split_lines(task_file)
+
             line = "\u2500" * 70
             output_space = "\t" * 3
 
@@ -142,8 +148,8 @@ s - statistics
             - If they are the same you print the task in the format of Output 2
               shown in the PDF '''
         with open("tasks.txt", "r") as task_file:
-            task_file_data = task_file.read()
-            each_task = task_file_data.splitlines()
+
+            each_task = split_lines(task_file)
             line = "\u2500" * 70
             output_space = "\t" * 3
             
@@ -155,12 +161,12 @@ s - statistics
     elif menu == 's':
 
         if username != "admin":
-            print("Only username: 'admin' is allowed to register users. Please exit and login as 'admin'")
+            print("Only username: 'admin' is allowed to view statistics. Please exit and login as 'admin'")
             continue
 
         with open("tasks.txt", "r") as task_file:
-            task_file_data = task_file.read()
-            each_task = task_file_data.splitlines()
+
+            each_task = split_lines(task_file)
 
             task_count = 0
 
@@ -168,8 +174,8 @@ s - statistics
                 task_count += 1
 
         with open("user.txt", "r") as user_file:
-            user_file_data = user_file.read()
-            each_user = user_file_data.splitlines()
+
+            each_user = split_lines(user_file)
 
             user_count = 0
 
