@@ -1,9 +1,0 @@
-admin, Register Users with task_manager.py, Use task_manager.py to add the usernames and passwords for all team members that will be using this program., 10 Oct 2019, 20 Oct 2019, No
-admin, Assign initial tasks, Use task_manager.py to assign each team member with appropriate tasks, 10 Oct 2019, 25 Oct 2019, No
-DanTheMan, make lunch, Cook a full three course meal for lunch, 21  Aug  2023, 23 Aug 2023, No
-LorenzoBennie, Finish code, Complete the coding exercise, 21  Aug  2023, 30 Aug 2023, No
-SpongeBob, Krabby Patty, Cook 10 Krabby Patties, 21  Aug  2023, 22 Sep 2023, No
-LorenzoBennie, Find motivation, You cant be living like this bra. You need wake that fire up again., 21  Aug  2023, NOW, No
-SpongeBob, I'm ready, Get to work, 21  Aug  2023, 21 Nov 2023, No
-Batman, Protect the city, Save the city from being blown up by the Joker, 21  Aug  2023, 03 Dec 2023, No
-PeterParker, Get pictures of Spiderman, You are Spiderman so this should be easy, 22  Aug  2023, 16 Dec 2023, No
